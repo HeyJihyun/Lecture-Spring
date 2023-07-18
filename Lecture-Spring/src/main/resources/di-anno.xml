@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:context ="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	   http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	   ">
+	   <!-- 어노테이션을 사용하기 위한 필수 환경설정 -->
+	   <context:annotation-config />
+	   
+	   <!-- Autowired는 타입우선이기때문에 tire형이 두개면 에러남, 
+	   		tire형의 이름과 동일한게 있으면 타입 다음에 이름으로 자동주입 -->
+	   <bean class="di.anno.HankookTire" id="hankook"/>
+	   <bean class="di.anno.KumhoTire" id="kumho"/>
+	   <!-- <bean class="di.anno.KumhoTire" id="tire"/> -->
+	   <bean class="di.anno.Car" id="car"/>
+</beans>
