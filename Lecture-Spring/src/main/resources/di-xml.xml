@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+>
+	<!-- 객체생성 -->
+	<bean class="di.xml.HankookTire" id="hankook" />
+	<bean class="di.xml.KumhoTire" id="kumho" />
+
+	<!-- Car car = new Car(); -->
+	<bean class="di.xml.Car" id="car">
+		<!-- 
+			setter 주입 
+			car.setTire(kumho);
+		-->
+		<property name="tire" ref="kumho"></property>
+	</bean>
+	
+	<!-- Car car = new Car(hankook); -->
+	<bean class="di.xml.Car" id="car2" >
+		<constructor-arg ref="hankook"/>
+		<constructor-arg ref="kumho"/>
+	</bean>
+	
+	<!-- Car car = new Car(hankook); -->
+	<bean class="di.xml.Car" id="car3" >
+		<constructor-arg ref="hankook"/>
+		<constructor-arg value="얘는 String"/>
+	</bean>
+	
+</beans>
