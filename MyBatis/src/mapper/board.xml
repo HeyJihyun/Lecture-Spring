@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace = "자바의 패키지" -->
+<mapper namespace="board.dao.BoardDAO">
+
+	<!-- 다른곳에서 실행할때 실제이름 :  board.dao.BoardDAO.insert (namespace + id)-->
+	<insert id="insert" parameterType="java.lang.String">
+		insert into t_board(NO, TITLE, WRITER) 
+		<!-- values(seq_t_board_no.nextval, '제목이오', '홍길동') -->
+ 		values(seq_t_board_no.nextval, #{title}, '홍길동')
+	</insert>
+</mapper>
