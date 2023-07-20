@@ -2,13 +2,86 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!-- namespace = "자바의 패키지" -->
+<!-- namespace = "자바의 패키지" -->
 <mapper namespace="board.dao.BoardDAO">
 
-	<!-- 다른곳에서 실행할때 실제이름 :  board.dao.BoardDAO.insert (namespace + id)-->
-	<insert id="insert" parameterType="java.lang.String">
-		insert into t_board(NO, TITLE, WRITER) 
+	<sql id="selectBoard">
+		select * from t_board
+	</sql>
+
+	<!-- 컬럼명과 vo의 변수명 다른 것 직접 매핑 -->
+	<resultMap type="board" id="boardMap">
+		<result column="view_cnt" property="viewCnt" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+
+	<!-- 다른곳에서 실행할때 실제이름 : board.dao.BoardDAO.insert (namespace + id) -->
+	<insert id="insert" parameterType="board">
+		insert into t_board(NO, TITLE, WRITER)
 		<!-- values(seq_t_board_no.nextval, '제목이오', '홍길동') -->
- 		values(seq_t_board_no.nextval, #{title}, '홍길동')
+		values(seq_t_board_no.nextval, #{title}, #{writer})
 	</insert>
+
+	<select id="selectAll" resultType="board">
+		select *
+		from t_board
+		order by
+		no desc
+	</select>
+
+	<!-- resultMap으로 매핑한 것으로 반환 -->
+	<select id="selectAll2" resultMap="boardMap">
+		select *
+		from t_board
+		order by
+		no desc
+	</select>
+
+	<select id="selectByNo" parameterType="board"
+		resultMap="boardMap">
+		<include refid="selectBoard" />
+		where no = ${no}
+	</select>
+
+	<select id="selectWhere" parameterType="board" resultMap="boardMap">
+		<include refid="selectBoard" />
+		<where>
+			<if test="title != null">
+				title = #{title} 
+			</if>
+			<if test="writer != null">
+				and writer = #{writer}
+			</if>
+		</where>
+		order by no desc
+	</select>
+	
+	<select id="selectWhere2" parameterType="map" resultMap="boardMap">
+		<include refid="selectBoard" />
+		<where>
+			<if test="title != null">
+				title = #{title} 
+			</if>
+			<if test="writer != null">
+				and writer = #{writer}
+			</if>
+		</where>
+		order by no desc
+	</select> 
+	<select id="selectWhere3" parameterType="map" resultType="map">
+		<include refid="selectBoard" />
+		<where>
+			no = #{no}
+		</where>
+		order by no desc
+	</select>
+	
+	<select id = "selectNos" parameterType="int[]" resultMap="boardMap">
+		<include refid="selectBoard" />
+		where no in
+			<foreach collection="array" item="bno" open="(" separator="," close=")">
+			#{bno}
+			</foreach>		
+	</select>
+
 </mapper>
