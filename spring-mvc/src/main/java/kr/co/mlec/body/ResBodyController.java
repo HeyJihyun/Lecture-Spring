@@ -22,7 +22,7 @@ public class ResBodyController {
 
 	@RequestMapping("/resBody.json")
 	@ResponseBody
-	public Map<String, String> resStringBody2() {
+	public Map<String, String> resJsonBody() {
 		Map<String, String> result = new HashMap<>();
 		result.put("id", "sbc");
 		result.put("name", "hong");
@@ -32,7 +32,7 @@ public class ResBodyController {
 
 	@RequestMapping("/resVOBody.json")
 	@ResponseBody
-	public MemberVO resStringBody3() {
+	public MemberVO resJsonVOBody() {
 		MemberVO vo = new MemberVO();
 		vo.setId("sbc");
 		vo.setName("sbc");
@@ -42,7 +42,7 @@ public class ResBodyController {
 
 	@RequestMapping("/resStringListBody.json")
 	@ResponseBody
-	public List<String> resStringBody4() {
+	public List<String> resStringListBody() {
 		List<String> list = new ArrayList<>();
 		for (int i = 1; i < 4; i++) {
 			list.add(String.valueOf(i));
@@ -52,7 +52,7 @@ public class ResBodyController {
 
 	@RequestMapping("/resVOListBody.json")
 	@ResponseBody
-	public List<MemberVO> resStringBody5() {
+	public List<MemberVO> resVOListBody() {
 		List<MemberVO> list = new ArrayList<>();
 		for (int i = 1; i < 4; i++) {
 			MemberVO vo = new MemberVO();
