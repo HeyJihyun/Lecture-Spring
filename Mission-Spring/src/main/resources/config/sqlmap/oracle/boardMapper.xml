@@ -10,4 +10,11 @@
 		  from t_board
 		 order by no desc
 	</select>
+
+	<select id="selectBoard" parameterType="int" resultType="boardVO">
+		select *
+		  from t_board
+		 where no = #{no}
+		 order by no desc
+	</select>
 </mapper>

@@ -69,7 +69,7 @@ public class DBtest {
 	@Test
 	public void service전체게시글조회테스트() throws Exception {
 
-		List<BoardVO> list = boardService.boardList();
+		List<BoardVO> list = boardService.getBoardList();
 
 		for (BoardVO board : list) {
 			System.out.println(board);
