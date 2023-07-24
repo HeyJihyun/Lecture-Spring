@@ -28,4 +28,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return board;
 	}
 
+	@Override
+	public void insertBoard(BoardVO board) {
+
+		sqlSession.insert("board.dao.BoardDAO.insertBoard", board);
+
+	}
+
 }

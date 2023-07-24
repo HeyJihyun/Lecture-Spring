@@ -10,4 +10,6 @@ public interface BoardService {
 
 	BoardVO getBoard(int no);
 
+	void addBoard(BoardVO board);
+
 }

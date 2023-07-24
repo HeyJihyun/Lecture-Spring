@@ -18,5 +18,18 @@ public interface BoardDAO {
 	 */
 	List<BoardVO> selectAllBoard();
 
+	/**
+	 * 상세 게시글 조회
+	 * 
+	 * @param no 조회 할 글번호
+	 * @return
+	 */
 	BoardVO selectBoard(int no);
+
+	/**
+	 * 글 등록
+	 * 
+	 * @param board
+	 */
+	void insertBoard(BoardVO board);
 }
