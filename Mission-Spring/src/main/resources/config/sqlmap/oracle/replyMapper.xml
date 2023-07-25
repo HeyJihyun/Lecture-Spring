@@ -11,9 +11,11 @@
 		values (seq_t_reply_no.nextval, #{boardNo}, #{content}, #{writer})
 	</insert>
 	
-	<select id="selectAllReply" resultType="replyVO">
-		select no, board_no boardNO, content, reg_date regDate, writer
+	<select id="selectAll" parameterType="int" resultType="replyVO">
+		select no, board_no boardNO, content, to_char(reg_date,'yyyy-mm-dd') regDate, writer
 		  from t_reply
+		 where board_no = #{no}
+		 order by no desc
 	</select>
 	
 
