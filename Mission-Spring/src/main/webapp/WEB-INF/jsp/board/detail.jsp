@@ -26,6 +26,23 @@ td{
 	padding-left: 20px;
 }
 </style>
+<script src="http://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#replyAddBtn').click(function(){
+			let content = document.rform.content.value
+			let writer = document.rform.writer.value
+			
+			console.log(content, writer)
+			
+			// http://localhost:8080/Mission-Spring/reply
+			$.ajax({
+				url: ''
+			})
+		})
+		
+	})
+</script>
 </head>
 <body>
 <section>
@@ -55,6 +72,23 @@ td{
 	<button onclick="location.href='${pageContext.request.contextPath}/board'">목록</button>
 	<button onclick="location.href='${pageContext.request.contextPath}/board'">수정</button>
 	<button onclick="location.href='${pageContext.request.contextPath}/board'">삭제</button>
+
+	<br>
+	<hr>
+	
+	<!-- 댓글관련 -->
+	
+	<form name="rform" method="post">
+		댓글 : <input type="text" name="content" size="50"/>
+		이름 : <input type="text" name="writer" size="10"/>
+		<button type="button" id="replyAddBtn">댓글 등록</button>
+		<div id="replyList">
+		
+		
+		</div>
+	</form>
+
+
 </section>
 
 </body>

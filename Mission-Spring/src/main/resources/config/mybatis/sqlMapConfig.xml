@@ -6,6 +6,7 @@
  	<typeAliases>
 		<typeAlias alias="boardVO" type="kr.co.mlec.board.vo.BoardVO"/>
 		<typeAlias alias="memberVO" type="kr.co.mlec.member.vo.MemberVO"/>
+		<typeAlias alias="replyVO" type="kr.co.mlec.reply.vo.ReplyVO"/>
 	</typeAliases>
 <!-- 	<mappers>
 		<mapper resource="config/sqlmap/oracle/boardMapper.xml"  />

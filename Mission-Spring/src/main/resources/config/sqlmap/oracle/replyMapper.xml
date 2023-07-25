@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = "자바의 패키지" -->
+<mapper namespace="reply.dao.ReplyDAO">
+
+	<!-- 댓글 등록 -->
+	<insert id="insert" parameterType="replyVO">
+		insert into t_reply(no, board_no, content, writer)
+		values (seq_t_reply_no.nextval, #{boardNo}, #{content}, #{writer})
+	</insert>
+	
+	<select id="selectAllReply" resultType="replyVO">
+		select no, board_no boardNO, content, reg_date regDate, writer
+		  from t_reply
+	</select>
+	
+
+</mapper>
